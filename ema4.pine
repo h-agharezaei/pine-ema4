@@ -1,0 +1,29 @@
+//@version=5
+
+indicator(title="SMA 15/30/60/240", shorttitle="SMA forth", overlay=true, timeframe="", timeframe_gaps=true)
+shortestNumber = 15
+shorterNumber = 30
+shortNumber = 60
+longNumber = 240
+
+thickLineSize1 = 1
+thickLineSize2 = 2
+thickLineSize3 = 4
+
+if ( timeframe.period == '1' or timeframe.period == '3' or timeframe.period == '5' or timeframe.period == '15' )
+    shortestNumber := 7
+    shorterNumber := 14
+    
+    
+
+shortest = ta.ema(close, shortestNumber)
+shorter = ta.ema(close, shorterNumber)
+short = ta.ema(close, shortNumber)
+long = ta.ema(close, longNumber)
+
+
+
+plot(shortest, color = color.gray,linewidth = thickLineSize1, title="15 EMA")
+plot(shorter, color = color.orange,linewidth = thickLineSize1, title="30 EMA")
+plot(short, color = color.purple,linewidth = thickLineSize1, title="60 EMA")
+plot(long, color = color.yellow ,linewidth = thickLineSize1, title="240 EMA")
